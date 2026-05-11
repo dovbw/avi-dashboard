@@ -146,8 +146,8 @@ function renderCumulative(donations) {
   charts.cumulative?.destroy();
 
   const gradient = ctx.createLinearGradient(0, 0, 0, 280);
-  gradient.addColorStop(0, 'rgba(255,122,69,0.40)');
-  gradient.addColorStop(1, 'rgba(255,122,69,0.00)');
+  gradient.addColorStop(0, 'rgba(94, 44, 165, 0.30)');
+  gradient.addColorStop(1, 'rgba(94, 44, 165, 0.00)');
 
   charts.cumulative = new Chart(ctx, {
     type: 'line',
@@ -155,14 +155,14 @@ function renderCumulative(donations) {
       datasets: [{
         label: 'מצטבר',
         data: points,
-        borderColor: '#d4a017',
+        borderColor: '#5e2ca5',
         backgroundColor: gradient,
         fill: true,
         tension: 0.3,
         borderWidth: 3,
         pointRadius: 4,
         pointHoverRadius: 7,
-        pointBackgroundColor: '#ff7a45',
+        pointBackgroundColor: '#5e2ca5',
         pointBorderColor: '#fff',
         pointBorderWidth: 2,
       }],
@@ -234,7 +234,7 @@ function renderDistribution(donations) {
       labels: buckets.map((b) => b.label),
       datasets: [{
         data: counts,
-        backgroundColor: ['#ffe1bd', '#ffc99a', '#ffa776', '#ff7a45', '#e85d2a', '#b8400d'],
+        backgroundColor: ['#d6c2ec', '#bda1de', '#a482d0', '#8a64c2', '#714ab5', '#5e2ca5'],
         borderRadius: 8,
         borderSkipped: false,
       }],
