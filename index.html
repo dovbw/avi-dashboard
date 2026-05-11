@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow">
+  <title>אופניים בשביל ירושלים — קמפיין גיוס 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <p class="kicker">קמפיין גיוס 2026</p>
+      <h1>אופניים בשביל ירושלים <span class="bike" aria-hidden="true">🚴</span></h1>
+
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+          <div class="progress-shimmer" aria-hidden="true"></div>
+        </div>
+        <div class="progress-meta">
+          <div class="raised-line">
+            <span class="raised-amount" id="raised">—</span>
+            <span class="of">מתוך</span>
+            <span class="goal-amount" id="goal">—</span>
+          </div>
+          <div class="percent" id="percent">—</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="stats" aria-label="סטטיסטיקות">
+      <div class="stat-card">
+        <div class="stat-label">סך הכל גויס</div>
+        <div class="stat-value" id="statTotal">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">מספר תרומות</div>
+        <div class="stat-value" id="statCount">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">תרומה ממוצעת</div>
+        <div class="stat-value" id="statAvg">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">התרומה הגדולה</div>
+        <div class="stat-value" id="statMax">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">התרומה הקטנה</div>
+        <div class="stat-value" id="statMin">—</div>
+      </div>
+      <div class="stat-card stat-card--accent">
+        <div class="stat-label">התרומה הכי מיוחדת</div>
+        <div class="stat-value" id="statOriginal">—</div>
+      </div>
+    </section>
+
+    <section class="charts">
+      <div class="chart-card chart-card--wide">
+        <h2>התקדמות לאורך זמן</h2>
+        <div class="chart-wrap"><canvas id="cumulativeChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h2>התפלגות גודל התרומה</h2>
+        <div class="chart-wrap"><canvas id="distributionChart"></canvas></div>
+      </div>
+    </section>
+
+    <section class="messages">
+      <h2>קיר הברכות 💛</h2>
+      <div class="ticker" id="ticker">
+        <div class="ticker-track" id="tickerTrack"></div>
+      </div>
+    </section>
+
+    <footer>
+      <span id="updated">טוען...</span>
+      <span class="dot">·</span>
+      <button id="refreshBtn" type="button">רענן עכשיו</button>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
