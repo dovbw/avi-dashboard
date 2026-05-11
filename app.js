@@ -104,7 +104,7 @@ function specialDonations(donations, limit = 8) {
     }
   }
   return [...byAmount.values()]
-    .filter((d) => d.score >= 100)
+    .filter((d) => d.score >= 500)
     .sort((a, b) => b.score - a.score)
     .slice(0, limit);
 }
