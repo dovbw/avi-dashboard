@@ -302,7 +302,7 @@ function renderTicker(donations) {
 /* ---------- Render ---------- */
 let lastTotal = 0;
 let firstRender = true;
-let specialIndex = 0;
+let lastSpecialAmount = null;
 
 function render(donations) {
   if (donations.length === 0) {
@@ -322,10 +322,16 @@ function render(donations) {
   const max = Math.max(...amounts);
   const min = Math.min(...amounts);
   const specials = specialDonations(donations);
-  const special = specials.length > 0
-    ? specials[specialIndex % specials.length]
-    : { amount: Math.max(...amounts) };
-  specialIndex++;
+  let special;
+  if (specials.length === 0) {
+    special = { amount: Math.max(...amounts) };
+  } else if (specials.length === 1) {
+    special = specials[0];
+  } else {
+    const pool = specials.filter((s) => s.amount !== lastSpecialAmount);
+    special = pool[Math.floor(Math.random() * pool.length)];
+    lastSpecialAmount = special.amount;
+  }
 
   const startFrom = firstRender ? 0 : lastTotal;
   animateNumber($('raised'), startFrom, total, 1400, (v) => fmtMoney(v));
