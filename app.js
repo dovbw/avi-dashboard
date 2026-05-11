@@ -92,6 +92,8 @@ function originalityScore(amount) {
 }
 
 function specialDonations(donations, limit = 8) {
+  if (donations.length === 0) return [];
+  const minAmount = Math.min(...donations.map((d) => d.amount));
   const freq = new Map();
   for (const d of donations) freq.set(d.amount, (freq.get(d.amount) || 0) + 1);
   const byAmount = new Map();
@@ -104,7 +106,7 @@ function specialDonations(donations, limit = 8) {
     }
   }
   return [...byAmount.values()]
-    .filter((d) => d.score >= 500)
+    .filter((d) => d.score >= 500 && d.amount !== minAmount)
     .sort((a, b) => b.score - a.score)
     .slice(0, limit);
 }
