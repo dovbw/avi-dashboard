@@ -322,9 +322,10 @@ function render(donations) {
   lastTotal = total;
 
   $('goal').textContent = fmtMoney(CONFIG.goal);
-  const pct = Math.min(100, (total / CONFIG.goal) * 100);
+  const pct = (total / CONFIG.goal) * 100;
+  const barPct = Math.min(100, pct);
   // Slight delay so the bar grows after numbers start ticking
-  setTimeout(() => { $('progressFill').style.width = pct + '%'; }, 60);
+  setTimeout(() => { $('progressFill').style.width = barPct + '%'; }, 60);
 
   const startPct = firstRender ? 0 : Number($('percent').dataset.last || 0);
   animateNumber({
