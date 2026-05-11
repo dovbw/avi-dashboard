@@ -148,6 +148,57 @@ main {
   font-variant-numeric: tabular-nums;
 }
 
+.donate-cta {
+  margin-top: clamp(20px, 3vw, 28px);
+  text-align: center;
+}
+.donate-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 60%, var(--orange-deep) 100%);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: clamp(16px, 2.2vw, 19px);
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(232, 93, 42, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  letter-spacing: 0.01em;
+}
+.donate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(232, 93, 42, 0.45);
+  filter: brightness(1.05);
+}
+.donate-btn:active {
+  transform: translateY(0);
+}
+.donate-secondary {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.donate-bit {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(31, 34, 48, 0.25);
+}
+.donate-bit:hover {
+  border-bottom-color: var(--orange-deep);
+  color: var(--orange-deep);
+}
+.donate-note {
+  display: inline-block;
+  margin-inline-start: 6px;
+  font-size: 13px;
+  opacity: 0.75;
+}
+@media (max-width: 540px) {
+  .donate-note { display: block; margin-inline-start: 0; margin-top: 2px; }
+}
+
 /* STATS */
 .stats {
   display: grid;
