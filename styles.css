@@ -179,6 +179,11 @@ main {
   font-weight: 800;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+.stat-value.fading {
+  opacity: 0;
+  transform: translateY(-4px);
 }
 .stat-card--accent .stat-value {
   color: var(--orange-deep);

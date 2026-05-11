@@ -91,16 +91,22 @@ function originalityScore(amount) {
   return 0;                            // 1000+
 }
 
-function mostOriginal(donations) {
+function specialDonations(donations, limit = 8) {
   const freq = new Map();
   for (const d of donations) freq.set(d.amount, (freq.get(d.amount) || 0) + 1);
-  let best = donations[0];
-  let bestScore = -Infinity;
+  const byAmount = new Map();
   for (const d of donations) {
-    const s = originalityScore(d.amount) + 1 / freq.get(d.amount);
-    if (s > bestScore) { bestScore = s; best = d; }
+    if (!byAmount.has(d.amount)) {
+      byAmount.set(d.amount, {
+        amount: d.amount,
+        score: originalityScore(d.amount) + 1 / freq.get(d.amount),
+      });
+    }
   }
-  return best;
+  return [...byAmount.values()]
+    .filter((d) => d.score >= 100)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit);
 }
 
 /* ---------- Animations ---------- */
@@ -296,6 +302,7 @@ function renderTicker(donations) {
 /* ---------- Render ---------- */
 let lastTotal = 0;
 let firstRender = true;
+let specialIndex = 0;
 
 function render(donations) {
   if (donations.length === 0) {
@@ -314,7 +321,11 @@ function render(donations) {
   const avg = total / count;
   const max = Math.max(...amounts);
   const min = Math.min(...amounts);
-  const original = mostOriginal(donations);
+  const specials = specialDonations(donations);
+  const special = specials.length > 0
+    ? specials[specialIndex % specials.length]
+    : { amount: Math.max(...amounts) };
+  specialIndex++;
 
   const startFrom = firstRender ? 0 : lastTotal;
   animateNumber($('raised'), startFrom, total, 1400, (v) => fmtMoney(v));
@@ -337,9 +348,19 @@ function render(donations) {
   $('statAvg').textContent = fmtMoney(avg);
   $('statMax').textContent = fmtMoney(max);
   $('statMin').textContent = fmtMoney(min);
-  $('statOriginal').textContent = fmtMoney(original.amount, {
-    decimals: Number.isInteger(original.amount) ? 0 : 2,
+  const el = $('statOriginal');
+  const newText = fmtMoney(special.amount, {
+    decimals: Number.isInteger(special.amount) ? 0 : 2,
   });
+  if (el.textContent !== newText) {
+    el.classList.add('fading');
+    setTimeout(() => {
+      el.textContent = newText;
+      el.classList.remove('fading');
+    }, 220);
+  } else {
+    el.textContent = newText;
+  }
 
   renderCumulative(donations);
   renderDistribution(donations);
