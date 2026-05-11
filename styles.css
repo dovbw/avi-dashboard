@@ -335,9 +335,99 @@ main {
   margin: 0 0 12px;
 }
 .info-card p:last-child { margin-bottom: 0; }
+.info-card h3 {
+  margin: 22px 0 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
 .info-card .placeholder {
   color: var(--ink-soft);
   font-style: italic;
+}
+
+/* Annual ride event */
+.event-date {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 28px;
+  border: 1.5px solid var(--purple);
+  border-radius: 14px;
+  background: var(--purple-tint);
+  margin-bottom: 22px;
+  gap: 2px;
+}
+.event-date-dow {
+  font-size: 13px;
+  color: var(--purple);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.event-date-main {
+  font-size: clamp(22px, 3.4vw, 28px);
+  font-weight: 800;
+  color: var(--purple-deep);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.event-date-hebrew {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.event-details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+}
+.event-details-list li {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  line-height: 1.6;
+  color: var(--ink);
+}
+.event-details-list li:last-child { border-bottom: 0; }
+.event-details-list strong {
+  color: var(--purple-deep);
+  font-weight: 700;
+  margin-inline-end: 4px;
+}
+
+.event-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 6px;
+}
+.event-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  border: 1.5px solid var(--purple);
+  border-radius: 999px;
+  color: var(--purple);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  background: transparent;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+.event-btn:hover {
+  background: var(--purple);
+  color: #fff;
+}
+.event-btn:active { transform: translateY(1px); }
+
+.event-safety {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  padding: 10px 14px;
+  background: var(--purple-tint);
+  border-radius: 8px;
+  border-inline-start: 3px solid var(--purple);
 }
 
 .faq-item {
