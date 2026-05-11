@@ -62,7 +62,7 @@ main {
 .hero {
   position: relative;
   text-align: center;
-  padding: clamp(28px, 5vw, 56px) clamp(16px, 4vw, 48px);
+  padding: clamp(14px, 2.4vw, 28px) clamp(16px, 4vw, 48px);
   border-radius: var(--radius);
   background: var(--card);
   box-shadow: var(--shadow);
@@ -75,7 +75,7 @@ main {
 
 .logo {
   display: block;
-  margin: 0 auto 20px;
+  margin: 0 auto 10px;
   height: clamp(72px, 10vw, 110px);
   width: auto;
   border-radius: 16px;
@@ -83,8 +83,8 @@ main {
 }
 
 .hero h1 {
-  margin: 0 0 28px;
-  font-size: clamp(22px, 4.2vw, 36px);
+  margin: 0 0 20px;
+  font-size: clamp(20px, 3.6vw, 30px);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: 0.005em;
@@ -142,7 +142,7 @@ main {
 }
 
 .donate-cta {
-  margin-top: clamp(20px, 3vw, 28px);
+  margin-top: clamp(14px, 2vw, 20px);
   text-align: center;
 }
 .donate-btn {
