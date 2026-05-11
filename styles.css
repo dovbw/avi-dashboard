@@ -78,6 +78,8 @@ main {
   margin: 0 auto 20px;
   height: clamp(72px, 10vw, 110px);
   width: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(94, 44, 165, 0.18);
 }
 
 .hero h1 {
