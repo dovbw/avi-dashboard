@@ -93,7 +93,6 @@ function originalityScore(amount) {
 
 function specialDonations(donations, limit = 8) {
   if (donations.length === 0) return [];
-  const minAmount = Math.min(...donations.map((d) => d.amount));
   const freq = new Map();
   for (const d of donations) freq.set(d.amount, (freq.get(d.amount) || 0) + 1);
   const byAmount = new Map();
@@ -106,7 +105,7 @@ function specialDonations(donations, limit = 8) {
     }
   }
   return [...byAmount.values()]
-    .filter((d) => d.score >= 500 && d.amount !== minAmount)
+    .filter((d) => d.score >= 500 && d.amount > 10)
     .sort((a, b) => b.score - a.score)
     .slice(0, limit);
 }
@@ -320,9 +319,12 @@ function render(donations) {
   const amounts = donations.map((d) => d.amount);
   const total = amounts.reduce((a, b) => a + b, 0);
   const count = donations.length;
-  const avg = total / count;
+  const meaningful = donations.filter((d) => d.amount >= 5);
+  const meaningfulAmounts = meaningful.map((d) => d.amount);
+  const avg = meaningful.length > 0
+    ? meaningfulAmounts.reduce((a, b) => a + b, 0) / meaningful.length
+    : 0;
   const max = Math.max(...amounts);
-  const min = Math.min(...amounts);
   const specials = specialDonations(donations);
   let special;
   if (specials.length === 0) {
@@ -355,7 +357,6 @@ function render(donations) {
   $('statCount').textContent = fmtNum(count);
   $('statAvg').textContent = fmtMoney(avg);
   $('statMax').textContent = fmtMoney(max);
-  $('statMin').textContent = fmtMoney(min);
   const el = $('statOriginal');
   const newText = fmtMoney(special.amount, {
     decimals: Number.isInteger(special.amount) ? 0 : 2,
