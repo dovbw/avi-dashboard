@@ -482,6 +482,39 @@ main {
   font-weight: 600;
 }
 
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1.5px solid var(--purple);
+  color: var(--purple);
+  background: var(--card);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+.social-icons a:hover {
+  background: var(--purple);
+  color: #fff;
+}
+.social-icons a:active { transform: translateY(1px); }
+.social-icons svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+.social-icons a[aria-label="Facebook"] svg {
+  width: 26px;
+  height: 26px;
+}
+
 .faq-item {
   border-top: 1px solid var(--line);
   padding: 14px 0;
