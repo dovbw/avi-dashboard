@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>מוקאפ — יעד בונוס</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --purple-bonus: #9974c0;
+    }
+    body { padding: 40px 20px; }
+    .mockup-container { max-width: 900px; margin: 0 auto; }
+    .mockup-intro {
+      text-align: center;
+      margin-bottom: 28px;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+    .mockup-case {
+      margin-bottom: 28px;
+      padding: 28px 32px;
+      background: var(--card);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+    .mockup-title {
+      margin: 0 0 26px;
+      font-size: 14px;
+      color: var(--ink-soft);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    /* Bonus-mode bar */
+    .progress-bar--split { display: flex; }
+    .progress-section { position: relative; height: 100%; }
+    .progress-section--main { flex: 0 0 66.667%; }
+    .progress-section--bonus { flex: 0 0 33.333%; }
+    .progress-fill {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      transition: width 1.4s cubic-bezier(.22,.61,.36,1);
+    }
+    .progress-fill--main { background: var(--purple); }
+    .progress-fill--bonus { background: var(--purple-bonus); }
+    .progress-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 66.667%;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.65);
+      pointer-events: none;
+      transform: translateX(-1px);
+      z-index: 1;
+    }
+
+    /* Marks above the bar */
+    .progress-wrap--bonus { padding-top: 26px; }
+    .progress-mark {
+      position: absolute;
+      top: -22px;
+      transform: translateX(50%);
+      pointer-events: none;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .progress-mark--main { right: 66.667%; }
+    .progress-mark--total { right: 100%; }
+    .progress-mark-label {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--ink-soft);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .progress-mark--total .progress-mark-label { color: var(--purple-bonus); }
+    .progress-mark::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 6px;
+      background: var(--ink-soft);
+      opacity: 0.5;
+      margin: 4px auto 0;
+    }
+    .progress-mark--total::after { background: var(--purple-bonus); opacity: 0.7; }
+
+    .goal-with-bonus {
+      display: inline-block;
+      position: relative;
+    }
+    .bonus-tag {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 2px;
+      font-size: 12px;
+      color: var(--purple-bonus);
+      font-weight: 600;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+    .progress-meta--bonus { margin-bottom: 14px; }
+
+    .mobile-preview {
+      max-width: 375px;
+      margin: 0 auto 24px;
+      padding: 8px;
+      background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+    .mobile-preview .mockup-case {
+      margin-bottom: 12px;
+      padding: 18px;
+      border-radius: 12px;
+    }
+    .mobile-preview .mockup-case:last-child { margin-bottom: 0; }
+    .mobile-preview .mockup-title {
+      margin-bottom: 18px;
+      font-size: 12px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-soft);
+      letter-spacing: 0.06em;
+      margin: 36px 0 14px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <main class="mockup-container">
+    <p class="mockup-intro">מוקאפ — תצוגה חדשה של יעד הבונוס. הסרגל מתרחב רק אחרי שעוברים את 20,000 ₪.</p>
+
+    <div class="mockup-case">
+      <p class="mockup-title">דוגמה: ₪19,800 (לפני היעד העיקרי)</p>
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill progress-fill--main" style="width: 99%"></div>
+        </div>
+        <div class="progress-meta">
+          <div class="raised-line">
+            <span class="raised-amount">19,800 ₪</span>
+            <span class="of">מתוך</span>
+            <span class="goal-amount">20,000 ₪</span>
+          </div>
+          <div class="percent">99.0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mockup-case">
+      <p class="mockup-title">דוגמה: ₪24,000 (בתוך יעד הבונוס)</p>
+      <div class="progress-wrap progress-wrap--bonus" style="position: relative;">
+        <div class="progress-bar progress-bar--split">
+          <div class="progress-section progress-section--main">
+            <div class="progress-fill progress-fill--main" style="width: 100%"></div>
+          </div>
+          <div class="progress-section progress-section--bonus">
+            <div class="progress-fill progress-fill--bonus" style="width: 40%"></div>
+          </div>
+          <div class="progress-mark progress-mark--main">
+            <span class="progress-mark-label">יעד עיקרי · ₪20,000</span>
+          </div>
+          <div class="progress-mark progress-mark--total">
+            <span class="progress-mark-label">יעד בונוס · ₪30,000</span>
+          </div>
+        </div>
+        <div class="progress-meta progress-meta--bonus">
+          <div class="raised-line">
+            <span class="raised-amount">24,000 ₪</span>
+            <span class="of">מתוך</span>
+            <span class="goal-with-bonus">
+              <span class="goal-amount">30,000 ₪</span>
+              <span class="bonus-tag">(יעד בונוס)</span>
+            </span>
+          </div>
+          <div class="percent">120.0%</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-title">תצוגת מובייל (375px)</p>
+    <div class="mobile-preview">
+      <div class="mockup-case">
+        <p class="mockup-title">₪19,800 (לפני היעד)</p>
+        <div class="progress-wrap">
+          <div class="progress-bar">
+            <div class="progress-fill progress-fill--main" style="width: 99%"></div>
+          </div>
+          <div class="progress-meta">
+            <div class="raised-line">
+              <span class="raised-amount">19,800 ₪</span>
+              <span class="of">מתוך</span>
+              <span class="goal-amount">20,000 ₪</span>
+            </div>
+            <div class="percent">99.0%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mockup-case">
+        <p class="mockup-title">₪24,000 (יעד בונוס)</p>
+        <div class="progress-wrap progress-wrap--bonus" style="position: relative;">
+          <div class="progress-bar progress-bar--split">
+            <div class="progress-section progress-section--main">
+              <div class="progress-fill progress-fill--main" style="width: 100%"></div>
+            </div>
+            <div class="progress-section progress-section--bonus">
+              <div class="progress-fill progress-fill--bonus" style="width: 40%"></div>
+            </div>
+            <div class="progress-mark progress-mark--main">
+              <span class="progress-mark-label">יעד עיקרי · ₪20,000</span>
+            </div>
+            <div class="progress-mark progress-mark--total">
+              <span class="progress-mark-label">יעד בונוס · ₪30,000</span>
+            </div>
+          </div>
+          <div class="progress-meta progress-meta--bonus">
+            <div class="raised-line">
+              <span class="raised-amount">24,000 ₪</span>
+              <span class="of">מתוך</span>
+              <span class="goal-with-bonus">
+                <span class="goal-amount">30,000 ₪</span>
+                <span class="bonus-tag">(יעד בונוס)</span>
+              </span>
+            </div>
+            <div class="percent">120.0%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
