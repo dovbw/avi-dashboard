@@ -1,7 +1,6 @@
 const CONFIG = {
   sheetId: '1DIPa8j42dNpE-6xneNwWAvRWgYATCXET',
   goal: 30000,
-  bonusGoal: 30000,
   currency: 'ILS',
   locale: 'he-IL',
   refreshSeconds: 60,
@@ -311,7 +310,7 @@ function render(donations) {
     document.querySelectorAll('.stat-value').forEach((el) => (el.textContent = '—'));
     $('raised').textContent = fmtMoney(0);
     $('goal').textContent = fmtMoney(CONFIG.goal);
-    $('progressFillSingle').style.width = '0%';
+    $('progressFill').style.width = '0%';
     $('percent').textContent = '0%';
     renderTicker([]);
     return;
@@ -343,36 +342,10 @@ function render(donations) {
   animateNumber($('statTotal'), startFrom, total, 1400, (v) => fmtMoney(v));
   lastTotal = total;
 
-  const goal = CONFIG.goal;
-  const bonusGoal = CONFIG.bonusGoal;
-  const bonusAmount = bonusGoal - goal;
-  const inBonus = total >= goal;
-  const pct = (total / goal) * 100;
-
-  if (inBonus) {
-    $('progressBarSingle').hidden = true;
-    $('progressBarSplit').hidden = false;
-    $('progressWrap').classList.add('progress-wrap--bonus');
-    $('progressMeta').classList.add('progress-meta--bonus');
-    $('bonusTag').hidden = false;
-    $('goal').textContent = fmtMoney(bonusGoal);
-    $('markMain').textContent = fmtMoney(goal);
-    $('markTotal').textContent = fmtMoney(bonusGoal);
-    const bonusPct = Math.min(100, ((total - goal) / bonusAmount) * 100);
-    setTimeout(() => {
-      $('progressFillMain').style.width = '100%';
-      $('progressFillBonus').style.width = bonusPct + '%';
-    }, 60);
-  } else {
-    $('progressBarSingle').hidden = false;
-    $('progressBarSplit').hidden = true;
-    $('progressWrap').classList.remove('progress-wrap--bonus');
-    $('progressMeta').classList.remove('progress-meta--bonus');
-    $('bonusTag').hidden = true;
-    $('goal').textContent = fmtMoney(goal);
-    const barPct = Math.min(100, pct);
-    setTimeout(() => { $('progressFillSingle').style.width = barPct + '%'; }, 60);
-  }
+  $('goal').textContent = fmtMoney(CONFIG.goal);
+  const pct = (total / CONFIG.goal) * 100;
+  const barPct = Math.min(100, pct);
+  setTimeout(() => { $('progressFill').style.width = barPct + '%'; }, 60);
 
   const startPct = firstRender ? 0 : Number($('percent').dataset.last || 0);
   animateNumber({
