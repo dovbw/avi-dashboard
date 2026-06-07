@@ -1,6 +1,6 @@
 const CONFIG = {
   sheetId: '1DIPa8j42dNpE-6xneNwWAvRWgYATCXET',
-  goal: 20000,
+  goal: 30000,
   bonusGoal: 30000,
   currency: 'ILS',
   locale: 'he-IL',
