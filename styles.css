@@ -8,6 +8,7 @@
   --purple-deep: #3f1d6f;
   --purple-soft: #ede4f7;
   --purple-tint: #f6f0fc;
+  --purple-bonus: #9974c0;
   --green: #10b981;
   --line: #e7dff0;
   --shadow-sm: 0 2px 8px rgba(60, 30, 110, 0.05);
@@ -116,6 +117,70 @@ main {
   pointer-events: none;
 }
 .progress-shimmer { display: none; }
+
+/* Split bar (bonus mode) */
+.progress-wrap--bonus { padding-top: 26px; }
+.progress-bar--split { display: flex; }
+.progress-section { position: relative; height: 100%; }
+.progress-section--main { flex: 0 0 66.667%; }
+.progress-section--bonus { flex: 0 0 33.333%; }
+.progress-bar--split .progress-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 0;
+}
+.progress-fill--bonus { background: var(--purple-bonus); }
+
+/* Marks above the split bar */
+.progress-mark {
+  position: absolute;
+  top: -22px;
+  transform: translateX(50%);
+  pointer-events: none;
+  white-space: nowrap;
+  text-align: center;
+}
+.progress-mark--main { right: 66.667%; }
+.progress-mark--total { right: 100%; }
+.progress-mark-label {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.progress-mark--total .progress-mark-label { color: var(--purple-bonus); }
+.progress-mark::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 6px;
+  background: var(--ink-soft);
+  opacity: 0.5;
+  margin: 4px auto 0;
+}
+.progress-mark--total::after { background: var(--purple-bonus); opacity: 0.7; }
+
+/* Bonus tag under the goal amount */
+.goal-with-bonus {
+  display: inline-block;
+  position: relative;
+}
+.bonus-tag {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--purple-bonus);
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.progress-meta--bonus { margin-bottom: 14px; }
 
 .progress-meta {
   display: flex;
